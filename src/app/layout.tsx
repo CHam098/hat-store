@@ -1,19 +1,28 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Jost, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import Header from "@/components/Header";
 import CartSlider from "@/components/CartSlider";
 import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jost = Jost({
+  variable: "--font-jost",
   subsets: ["latin"],
+  weight: ["300", "400", "500"],
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
-  title: "Hatwell — Minimalist Hat Store",
-  description: "Curated collection of minimalist hats for every occasion.",
+  title: "Hatwell — Maison of Fine Millinery",
+  description:
+    "An heritage collection of finely crafted hats. Timeless design, uncompromising craft.",
 };
 
 export default function RootLayout({
@@ -22,8 +31,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} antialiased`}>
+    <html lang="en" className="bg-background">
+      <body className={`${jost.variable} ${cormorant.variable} antialiased`}>
         <CartProvider>
           <Header />
           <main className="min-h-screen">{children}</main>

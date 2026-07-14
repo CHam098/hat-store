@@ -19,15 +19,16 @@ export default function CartSlider() {
   return (
     <>
       <div
-        className="fixed inset-0 bg-black/30 z-50"
+        className="fixed inset-0 bg-foreground/40 z-50"
         onClick={() => setIsCartOpen(false)}
       />
-      <div className="fixed right-0 top-0 h-full w-full max-w-md bg-white z-50 shadow-xl flex flex-col">
-        <div className="p-6 border-b border-neutral-200 flex items-center justify-between">
-          <h2 className="text-lg font-semibold">Cart</h2>
+      <div className="fixed right-0 top-0 h-full w-full max-w-md bg-background z-50 shadow-2xl flex flex-col border-l border-border">
+        <div className="p-6 border-b border-border flex items-center justify-between">
+          <h2 className="font-serif text-2xl">Your Selection</h2>
           <button
             onClick={() => setIsCartOpen(false)}
-            className="text-neutral-400 hover:text-black text-2xl leading-none"
+            className="text-muted hover:text-primary text-2xl leading-none transition-colors"
+            aria-label="Close cart"
           >
             &times;
           </button>
@@ -35,7 +36,9 @@ export default function CartSlider() {
 
         {items.length === 0 ? (
           <div className="flex-1 flex items-center justify-center">
-            <p className="text-neutral-400 text-sm">Your cart is empty</p>
+            <p className="text-muted text-[11px] uppercase tracking-[0.25em]">
+              Your selection is empty
+            </p>
           </div>
         ) : (
           <>
@@ -45,7 +48,7 @@ export default function CartSlider() {
                   key={`${item.product.id}-${item.color}`}
                   className="flex gap-4"
                 >
-                  <div className="w-20 h-20 bg-neutral-100 rounded-lg flex-shrink-0">
+                  <div className="w-20 h-20 bg-surface flex-shrink-0">
                     <Image
                       src={item.product.image}
                       alt={item.product.name}
@@ -55,13 +58,13 @@ export default function CartSlider() {
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-sm font-medium truncate">
+                    <h3 className="font-serif text-base truncate">
                       {item.product.name}
                     </h3>
-                    <p className="text-xs text-neutral-500 mt-0.5">
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-muted mt-0.5">
                       {item.color}
                     </p>
-                    <div className="flex items-center justify-between mt-2">
+                    <div className="flex items-center justify-between mt-2.5">
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() =>
@@ -71,7 +74,8 @@ export default function CartSlider() {
                               item.quantity - 1
                             )
                           }
-                          className="w-6 h-6 border border-neutral-300 rounded text-xs flex items-center justify-center hover:bg-neutral-100"
+                          className="w-6 h-6 border border-border text-xs flex items-center justify-center hover:border-accent hover:text-primary transition-colors"
+                          aria-label="Decrease quantity"
                         >
                           &minus;
                         </button>
@@ -86,7 +90,8 @@ export default function CartSlider() {
                               item.quantity + 1
                             )
                           }
-                          className="w-6 h-6 border border-neutral-300 rounded text-xs flex items-center justify-center hover:bg-neutral-100"
+                          className="w-6 h-6 border border-border text-xs flex items-center justify-center hover:border-accent hover:text-primary transition-colors"
+                          aria-label="Increase quantity"
                         >
                           +
                         </button>
@@ -99,7 +104,7 @@ export default function CartSlider() {
                           onClick={() =>
                             removeItem(item.product.id, item.color)
                           }
-                          className="text-neutral-400 hover:text-black text-xs"
+                          className="text-[10px] uppercase tracking-[0.15em] text-muted hover:text-primary transition-colors"
                         >
                           Remove
                         </button>
@@ -109,17 +114,19 @@ export default function CartSlider() {
                 </div>
               ))}
             </div>
-            <div className="p-6 border-t border-neutral-200 space-y-4">
+            <div className="p-6 border-t border-border space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Total</span>
-                <span className="text-lg font-semibold">${totalPrice}</span>
+                <span className="text-[11px] uppercase tracking-[0.25em] text-muted">
+                  Total
+                </span>
+                <span className="font-serif text-2xl">${totalPrice}</span>
               </div>
               <Link
                 href="/checkout"
                 onClick={() => setIsCartOpen(false)}
-                className="block w-full bg-black text-white text-center py-3 rounded-lg text-sm font-medium hover:bg-neutral-800 transition-colors"
+                className="block w-full bg-primary text-primary-foreground text-center py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-accent transition-colors"
               >
-                Checkout
+                Proceed to Checkout
               </Link>
             </div>
           </>

@@ -11,20 +11,21 @@ export default function CheckoutPage() {
 
   if (submitted) {
     return (
-      <div className="max-w-6xl mx-auto px-6 py-20 text-center">
+      <div className="max-w-6xl mx-auto px-6 py-24 text-center">
         <div className="max-w-md mx-auto">
-          <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-8">
+            <svg className="w-8 h-8 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h1 className="text-2xl font-semibold">Order confirmed</h1>
-          <p className="text-neutral-500 mt-2 text-sm">
-            Thank you for your purchase. Your hats are on their way.
+          <h1 className="font-serif text-4xl">Order confirmed</h1>
+          <p className="text-muted mt-4 text-sm leading-relaxed">
+            Thank you for your purchase. Each piece is prepared with care and on
+            its way to you.
           </p>
           <Link
             href="/"
-            className="inline-block mt-8 text-sm text-neutral-500 hover:text-black transition-colors"
+            className="inline-block mt-10 text-[11px] uppercase tracking-[0.25em] text-muted hover:text-primary transition-colors"
           >
             &larr; Continue shopping
           </Link>
@@ -35,13 +36,13 @@ export default function CheckoutPage() {
 
   if (items.length === 0) {
     return (
-      <div className="max-w-6xl mx-auto px-6 py-20 text-center">
-        <h1 className="text-2xl font-semibold">Your cart is empty</h1>
+      <div className="max-w-6xl mx-auto px-6 py-24 text-center">
+        <h1 className="font-serif text-4xl">Your selection is empty</h1>
         <Link
           href="/"
-          className="inline-block mt-4 text-sm text-neutral-500 hover:text-black transition-colors"
+          className="inline-block mt-6 text-[11px] uppercase tracking-[0.25em] text-muted hover:text-primary transition-colors"
         >
-          &larr; Back to shop
+          &larr; Return to collection
         </Link>
       </div>
     );
@@ -55,96 +56,105 @@ export default function CheckoutPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-12">
-      <Link href="/" className="text-sm text-neutral-500 hover:text-black transition-colors">
-        &larr; Back to shop
+      <Link
+        href="/"
+        className="text-[11px] uppercase tracking-[0.25em] text-muted hover:text-primary transition-colors"
+      >
+        &larr; Return to collection
       </Link>
 
-      <h1 className="text-3xl font-semibold mt-8">Checkout</h1>
+      <h1 className="font-serif text-4xl md:text-5xl mt-8">Checkout</h1>
 
-      <div className="mt-8 grid md:grid-cols-5 gap-12">
+      <div className="mt-12 grid md:grid-cols-5 gap-16">
         {/* Form */}
-        <form onSubmit={handleSubmit} className="md:col-span-3 space-y-6">
+        <form onSubmit={handleSubmit} className="md:col-span-3 space-y-8">
           <div>
-            <h2 className="text-sm font-medium mb-4">Contact</h2>
+            <h2 className="text-[11px] uppercase tracking-[0.3em] text-accent mb-5">
+              Contact
+            </h2>
             <input
               type="email"
               placeholder="Email address"
               required
-              className="w-full border border-neutral-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors"
+              className="w-full bg-transparent border border-border px-4 py-3 text-sm placeholder:text-muted focus:outline-none focus:border-primary transition-colors"
             />
           </div>
 
           <div>
-            <h2 className="text-sm font-medium mb-4">Shipping</h2>
+            <h2 className="text-[11px] uppercase tracking-[0.3em] text-accent mb-5">
+              Shipping
+            </h2>
             <div className="grid grid-cols-2 gap-3">
               <input
                 type="text"
                 placeholder="First name"
                 required
-                className="border border-neutral-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors"
+                className="bg-transparent border border-border px-4 py-3 text-sm placeholder:text-muted focus:outline-none focus:border-primary transition-colors"
               />
               <input
                 type="text"
                 placeholder="Last name"
                 required
-                className="border border-neutral-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors"
+                className="bg-transparent border border-border px-4 py-3 text-sm placeholder:text-muted focus:outline-none focus:border-primary transition-colors"
               />
             </div>
             <input
               type="text"
               placeholder="Address"
               required
-              className="mt-3 w-full border border-neutral-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors"
+              className="mt-3 w-full bg-transparent border border-border px-4 py-3 text-sm placeholder:text-muted focus:outline-none focus:border-primary transition-colors"
             />
             <div className="grid grid-cols-3 gap-3 mt-3">
               <input
                 type="text"
                 placeholder="City"
                 required
-                className="border border-neutral-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors"
+                className="bg-transparent border border-border px-4 py-3 text-sm placeholder:text-muted focus:outline-none focus:border-primary transition-colors"
               />
               <input
                 type="text"
                 placeholder="State"
                 required
-                className="border border-neutral-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors"
+                className="bg-transparent border border-border px-4 py-3 text-sm placeholder:text-muted focus:outline-none focus:border-primary transition-colors"
               />
               <input
                 type="text"
                 placeholder="ZIP"
                 required
-                className="border border-neutral-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors"
+                className="bg-transparent border border-border px-4 py-3 text-sm placeholder:text-muted focus:outline-none focus:border-primary transition-colors"
               />
             </div>
           </div>
 
           <div>
-            <h2 className="text-sm font-medium mb-4">Payment</h2>
+            <h2 className="text-[11px] uppercase tracking-[0.3em] text-accent mb-5">
+              Payment
+            </h2>
             <input
               type="text"
               placeholder="Card number"
               required
-              className="w-full border border-neutral-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors"
+              className="w-full bg-transparent border border-border px-4 py-3 text-sm placeholder:text-muted focus:outline-none focus:border-primary transition-colors"
             />
             <div className="grid grid-cols-2 gap-3 mt-3">
               <input
                 type="text"
                 placeholder="MM / YY"
                 required
-                className="border border-neutral-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors"
+                className="bg-transparent border border-border px-4 py-3 text-sm placeholder:text-muted focus:outline-none focus:border-primary transition-colors"
               />
               <input
                 type="text"
                 placeholder="CVC"
                 required
-                className="border border-neutral-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors"
+                className="bg-transparent border border-border px-4 py-3 text-sm placeholder:text-muted focus:outline-none focus:border-primary transition-colors"
               />
             </div>
           </div>
 
           <button
             type="submit"
-            className="w-full bg-black text-white py-3 rounded-lg text-sm font-medium hover:bg-neutral-800 transition-colors"
+            className="w-full bg-primary text-primary-foreground py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-accent transition-colors"
           >
             Place Order &mdash; ${totalPrice}
           </button>
@@ -152,14 +162,16 @@ export default function CheckoutPage() {
 
         {/* Order Summary */}
         <div className="md:col-span-2">
-          <h2 className="text-sm font-medium mb-4">Order Summary</h2>
-          <div className="space-y-4">
+          <h2 className="text-[11px] uppercase tracking-[0.3em] text-accent mb-5">
+            Order Summary
+          </h2>
+          <div className="space-y-5">
             {items.map((item) => (
               <div
                 key={`${item.product.id}-${item.color}`}
                 className="flex gap-3"
               >
-                <div className="w-16 h-16 bg-neutral-100 rounded-lg flex-shrink-0">
+                <div className="w-16 h-16 bg-surface flex-shrink-0">
                   <Image
                     src={item.product.image}
                     alt={item.product.name}
@@ -169,8 +181,8 @@ export default function CheckoutPage() {
                   />
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium">{item.product.name}</p>
-                  <p className="text-xs text-neutral-500">
+                  <p className="font-serif text-base">{item.product.name}</p>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-muted mt-1">
                     {item.color} &middot; Qty {item.quantity}
                   </p>
                 </div>
@@ -180,18 +192,20 @@ export default function CheckoutPage() {
               </div>
             ))}
           </div>
-          <div className="mt-6 pt-4 border-t border-neutral-200">
+          <div className="mt-8 pt-5 border-t border-border">
             <div className="flex justify-between text-sm">
-              <span>Subtotal</span>
+              <span className="text-muted">Subtotal</span>
               <span>${totalPrice}</span>
             </div>
             <div className="flex justify-between text-sm mt-2">
-              <span>Shipping</span>
-              <span className="text-neutral-500">Free</span>
+              <span className="text-muted">Shipping</span>
+              <span className="text-muted">Complimentary</span>
             </div>
-            <div className="flex justify-between font-semibold mt-4 pt-4 border-t border-neutral-200">
-              <span>Total</span>
-              <span>${totalPrice}</span>
+            <div className="flex justify-between mt-5 pt-5 border-t border-border">
+              <span className="text-[11px] uppercase tracking-[0.25em] text-muted self-center">
+                Total
+              </span>
+              <span className="font-serif text-2xl">${totalPrice}</span>
             </div>
           </div>
         </div>
