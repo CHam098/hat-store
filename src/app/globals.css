@@ -1,19 +1,63 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafafa;
-  --foreground: #111111;
+  /* Warm ivory canvas */
+  --background: #f3f0e8;
+  --foreground: #1c1a16;
+
+  /* Elevated surfaces (cards, panels) */
+  --surface: #ece7db;
+  --surface-foreground: #1c1a16;
+
+  /* Heritage green — the house color */
+  --primary: #1e3a2f;
+  --primary-foreground: #f3f0e8;
+
+  /* Antique gold accent */
+  --accent: #9a7b43;
+  --accent-foreground: #f3f0e8;
+
+  /* Muted text + hairline borders */
+  --muted: #8a8272;
+  --border: #d6cfbf;
+
+  --radius: 0rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+
+  --font-sans: var(--font-jost);
+  --font-serif: var(--font-cormorant);
+
+  --radius: var(--radius);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Refined divider used as a luxury flourish */
+.rule-flourish {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.rule-flourish::before,
+.rule-flourish::after {
+  content: "";
+  width: 1.5rem;
+  height: 1px;
+  background: var(--accent);
 }

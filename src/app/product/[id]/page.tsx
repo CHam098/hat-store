@@ -16,10 +16,13 @@ export default function ProductPage() {
 
   if (!product) {
     return (
-      <div className="max-w-6xl mx-auto px-6 py-20 text-center">
-        <h1 className="text-2xl font-semibold">Product not found</h1>
-        <Link href="/" className="text-sm text-neutral-500 mt-4 inline-block hover:text-black">
-          &larr; Back to shop
+      <div className="max-w-6xl mx-auto px-6 py-24 text-center">
+        <h1 className="font-serif text-3xl">Piece not found</h1>
+        <Link
+          href="/"
+          className="text-[11px] uppercase tracking-[0.25em] text-muted mt-6 inline-block hover:text-primary transition-colors"
+        >
+          &larr; Return to collection
         </Link>
       </div>
     );
@@ -35,12 +38,15 @@ export default function ProductPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-12">
-      <Link href="/" className="text-sm text-neutral-500 hover:text-black transition-colors">
-        &larr; Back to shop
+      <Link
+        href="/"
+        className="text-[11px] uppercase tracking-[0.25em] text-muted hover:text-primary transition-colors"
+      >
+        &larr; Return to collection
       </Link>
 
-      <div className="mt-8 grid md:grid-cols-2 gap-12">
-        <div className="aspect-square bg-neutral-100 rounded-xl">
+      <div className="mt-10 grid md:grid-cols-2 gap-16">
+        <div className="aspect-square bg-surface">
           <Image
             src={product.image}
             alt={product.name}
@@ -51,28 +57,30 @@ export default function ProductPage() {
         </div>
 
         <div className="flex flex-col justify-center">
-          <p className="text-xs text-neutral-400 uppercase tracking-widest">
+          <span className="rule-flourish text-[10px] uppercase tracking-[0.35em] text-accent">
             {product.category}
-          </p>
-          <h1 className="text-3xl font-semibold mt-2">{product.name}</h1>
-          <p className="text-2xl mt-2">${product.price}</p>
-          <p className="text-sm text-neutral-500 mt-4 leading-relaxed">
+          </span>
+          <h1 className="font-serif text-4xl md:text-5xl mt-5 leading-tight text-balance">
+            {product.name}
+          </h1>
+          <p className="font-serif text-2xl mt-4">${product.price}</p>
+          <p className="text-sm text-muted mt-6 leading-relaxed max-w-md text-pretty">
             {product.description}
           </p>
 
-          <div className="mt-8">
-            <p className="text-xs font-medium text-neutral-400 uppercase tracking-widest mb-3">
-              Color
+          <div className="mt-10">
+            <p className="text-[10px] font-medium text-muted uppercase tracking-[0.3em] mb-4">
+              Colour
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2.5">
               {product.colors.map((c) => (
                 <button
                   key={c}
                   onClick={() => setSelectedColor(c)}
-                  className={`px-4 py-2 text-sm rounded-lg border transition-colors ${
+                  className={`px-5 py-2.5 text-[11px] uppercase tracking-[0.2em] border transition-colors ${
                     color === c
-                      ? "border-black bg-black text-white"
-                      : "border-neutral-300 hover:border-neutral-500"
+                      ? "border-primary bg-primary text-primary-foreground"
+                      : "border-border text-foreground/80 hover:border-accent hover:text-primary"
                   }`}
                 >
                   {c}
@@ -83,7 +91,7 @@ export default function ProductPage() {
 
           <button
             onClick={handleAdd}
-            className="mt-8 bg-black text-white py-3 px-8 rounded-lg text-sm font-medium hover:bg-neutral-800 transition-colors"
+            className="mt-10 bg-primary text-primary-foreground py-4 px-10 text-[11px] uppercase tracking-[0.3em] hover:bg-accent transition-colors self-start"
           >
             {added ? "Added to Cart" : "Add to Cart"}
           </button>
